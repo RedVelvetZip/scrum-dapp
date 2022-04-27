@@ -1,4 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
+const { REACT_APP_INFURA_URL, REACT_APP_PRIVATE_KEY } = process.env;
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -27,8 +29,8 @@ module.exports = {
       chainId: 1337,
     },
     rinkeby: {
-      url: `${process.env.INFURA_ID}`,
-      accounts: [`${process.env.PRIVATE_KEY}`]
+      url: `${process.env.REACT_APP_INFURA_URL}`,
+      accounts: [`${process.env.REACT_APP_PRIVATE_KEY}`]
     }
   },
 };
