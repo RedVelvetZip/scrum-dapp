@@ -11,20 +11,34 @@
 ```
 
 # deploy on local 8545
+get ABI and compile .sol file
 ```
-$ npx hardhat compile //get ABI and compile .sol file
-$ npx hardhat node //get local network accounts and priv keys in terminal; connect browser MetaMask to local8545; import account from terminal priv key options; should see 10k eth
-$ npx hardhat run scripts/deploy.js --network localhost //test it, see outputs in the 'hardhat node' terminal
-$ npm run start //find dapp on localhost:3000 and interact
+$ npx hardhat compile
+```
+get local network accounts and priv keys in terminal
+connect browser MetaMask to local8545
+import account from terminal priv key options
+should see 10k eth
+```
+$ npx hardhat node
+```
+test it, see outputs in the 'hardhat node' terminal
+```
+$ npx hardhat run scripts/deploy.js --network localhost
+```
+find dapp on localhost:3000 and interact
+```
+$ npm run start
 ```
 
 # deploy on testnet (Rinkeby)
+get ABI and compile .sol file
 ```
-$ npx hardhat compile //get ABI and compile .sol file
+$ npx hardhat compile
 ```
-//get Infura URL, add to .env
-//get wallet's private key for the hardhat.config.js setup, add to .env, precede it with an "0x"
-//in hardhat.config.js, add
+get Infura URL, add to .env
+get wallet's private key for the hardhat.config.js setup, add to .env, precede it with an "0x"
+in hardhat.config.js, add
 ```
 require("@nomiclabs/hardhat-waffle");
 .
