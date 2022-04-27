@@ -22,7 +22,7 @@ should see 10k eth
 ```
 $ npx hardhat node
 ```
-test it, see outputs in the 'hardhat node' terminal
+test it, see outputs in the 'hardhat node' terminal, deploy or deployGreeter / deployManager / etc
 ```
 $ npx hardhat run scripts/deploy.js --network localhost
 ```
@@ -46,7 +46,7 @@ require("@nomiclabs/hardhat-waffle");
 .
 defaultNetwork: "rinkeby",
 ```
-test it, see outputs in the 'hardhat node' terminal
+test it, see outputs in the 'hardhat node' terminal, call script deploy.js or deployGreeter / deployManager / etc
 ```
 $ npx hardhat run scripts/deploy.js --network rinkeby
 ```
