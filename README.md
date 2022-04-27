@@ -21,8 +21,22 @@ $ npm run start //find dapp on localhost:3000 and interact
 # deploy on testnet (Rinkeby)
 ```
 $ npx hardhat compile //get ABI and compile .sol file
+```
 //get Infura URL, add to .env
 //get wallet's private key for the hardhat.config.js setup, add to .env, precede it with an "0x"
-$ npx hardhat run scripts/deploy.js --network rinkeby //test it, see outputs in the 'hardhat node' terminal
-$ npm run start //find dapp on localhost:3000 and interact
+//in hardhat.config.js, add
+```
+require("@nomiclabs/hardhat-waffle");
+.
+.
+.
+defaultNetwork: "rinkeby",
+```
+test it, see outputs in the 'hardhat node' terminal
+```
+$ npx hardhat run scripts/deploy.js --network rinkeby
+```
+find dapp on localhost:3000 and interact
+```
+$ npm run start
 ```
