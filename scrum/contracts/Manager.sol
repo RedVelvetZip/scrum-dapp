@@ -22,8 +22,6 @@ contract Manager {
     }
 
     function getTickets() external view returns(Ticket[] memory) {
-        return tickets
+        return tickets;
     }
-
-
 }

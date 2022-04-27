@@ -23,14 +23,14 @@ module.exports = {
   paths: {
     artifacts: "./src/artifacts",
   },
-  defaultNetwork: "rinkeby", //if not stated otherwise, default goes to hardhat
+  // defaultNetwork: "rinkeby", //if not stated otherwise, default goes to hardhat
   networks: {
     hardhat: {  //for local 8545
       chainId: 1337,
     },
-    rinkeby: {
-      url: `${process.env.REACT_APP_INFURA_URL}`,
-      accounts: [`${process.env.REACT_APP_PRIVATE_KEY}`]
-    }
+    // rinkeby: {
+    //   url: `${process.env.REACT_APP_INFURA_URL}`,
+    //   accounts: [`${process.env.REACT_APP_PRIVATE_KEY}`]
+    // }
   },
 };

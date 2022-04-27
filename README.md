@@ -18,7 +18,8 @@ $ npx hardhat compile
 get local network accounts and priv keys in terminal
 connect browser MetaMask to local8545
 import account from terminal priv key options
-should see 10k eth
+should see 10k eth per account
+may want to run npx hardhat clean before node
 ```
 $ npx hardhat node
 ```
