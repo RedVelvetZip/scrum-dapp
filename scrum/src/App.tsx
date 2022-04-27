@@ -7,12 +7,6 @@ function App() {
   const [data, setData] = useState<string>();
   const [contract, setContract] = useState<any>(); //TODO: add Greeter type to types/index.d.ts and remove this 'as any'
 
-  const requestAccount = async () => {
-    await window.ethereum.request({
-      method: 'eth_requestAccounts',
-    });
-  };
-
   const getData = async () => {
     const data = await contract.greet();
     setData(data);
@@ -25,6 +19,7 @@ function App() {
   }
 
   const initConnection = async () => {
+    console.log(process.env.REACT_APP_KEY)
     if (typeof window.ethereum !== undefined) {
       await window.ethereum.request({ method: "eth_requestAccounts" });
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -49,6 +44,7 @@ function App() {
     <div className="App">
       <button onClick={getData}>Get Data</button>
       <button onClick={updateData}>Set Data</button>
+      
       <input
         onChange={(e) => setData(e.target.value)}
         placeholder="New Greeting"
