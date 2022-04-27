@@ -10,10 +10,18 @@
  $ npx hardhat
 ```
 
-# commands
+# deploy on local 8545
 ```
 $ npx hardhat compile //get ABI and compile .sol file
 $ npx hardhat node //get local network accounts and priv keys in terminal; connect browser MetaMask to local8545; import account from terminal priv key options; should see 10k eth
 $ npx hardhat run scripts/deploy.js --network localhost //test it, see outputs in the 'hardhat node' terminal
+$ npm run start //find dapp on localhost:3000 and interact
+```
 
+# deploy on testnet (Rinkeby)
+```
+$ npx hardhat compile //get ABI and compile .sol file
+//get Infura URL and a wallet's private key for the hardhat.config.js setup
+$ npx hardhat run scripts/deploy.js --network rinkeby //test it, see outputs in the 'hardhat node' terminal
+$ npm run start //find dapp on localhost:3000 and interact
 ```

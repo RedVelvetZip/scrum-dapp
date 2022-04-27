@@ -22,8 +22,12 @@ module.exports = {
     artifacts: "./src/artifacts",
   },
   networks: {
-    hardhat: {
+    hardhat: {  //for local 8545
       chainId: 1337,
     },
+    rinkeby: {
+      url: `${process.env.INFURA_ID}`,
+      accounts: [`${process.env.PRIV_KEY}`]
+    }
   },
 };

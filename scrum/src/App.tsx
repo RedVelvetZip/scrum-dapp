@@ -13,7 +13,6 @@ function App() {
     });
   };
 
-
   const getData = async () => {
     const data = await contract.greet();
     setData(data);
@@ -32,7 +31,7 @@ function App() {
       const signer = provider.getSigner();
       setContract(
         new ethers.Contract(
-          "0x5fbdb2315678afecb367f032d93f642f64180aa3", //get from terminal after deploy.js is called
+          "0x5fbdb2315678afecb367f032d93f642f64180aa3", //from terminal after deploy.js called
           Greeter.abi,
           signer
         ) 
@@ -45,7 +44,6 @@ function App() {
   useEffect(() => {
     initConnection();
   }, []);
-
 
   return (
     <div className="App">
