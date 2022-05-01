@@ -66,13 +66,13 @@ function App() {
   return (
     <div className="App">
       <div className="header">          
-        <h3>Red's Task Manager</h3>
+        <h3>Red's Rinkeby Scrum Board</h3>
         {/* <img id="logo" src={logo}></img> */}
         <div id="logo-animation"></div>
         {account != "" ? (
-          <p>Connected to {account.substring(0, 9)}...</p>
+          <p>Connected to {account.substring(0, 9)}...</p> //TODO: fix substring to show beginning and end
         ) : (
-          <button onClick={initConnection}>Connect</button>
+          <button onClick={initConnection}>Connect</button> //TODO: new connect button
         )}
       </div>
       <div className="input_section">
@@ -84,7 +84,7 @@ function App() {
           </button>
           <input
             className="input"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)} //TODO: check if this is working
             placeholder="Ticket Name"
           />
         </div>
