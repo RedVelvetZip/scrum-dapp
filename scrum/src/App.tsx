@@ -4,9 +4,9 @@ import Manager from "./artifacts/contracts/Manager.sol/Manager.json"
 import { Contract } from "web3-eth-contract"
 declare var window: any;
 interface ITicket {
+  // index: number,
   status: number,
   name: string,
-  index: number
 }
 
 function App() {
@@ -61,40 +61,6 @@ function App() {
     initConnection();
   }, []);
 
-
-  // //Old functions for Greeter V1
-  // const [data, setData] = useState<string>();
-  // const [contract, setContract] = useState<any>(); //TODO: add Greeter type to types/index.d.ts and remove this 'as any'
-  // const getData = async () => {
-  //   const data = await contract.greet();
-  //   setData(data);
-  // }
-  // const updateData = async () => {
-  //   const transaction = await contract.setGreeting(data);
-  //   await transaction.wait();
-  //   getData();
-  // }
-  // const initConnection = async () => {
-  //   console.log(process.env.REACT_APP_KEY)
-  //   if (typeof window.ethereum !== undefined) {
-  //     await window.ethereum.request({ method: "eth_requestAccounts" });
-  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
-  //     const signer = provider.getSigner();
-  //     setContract(
-  //       new ethers.Contract(
-  //         "0x5fbdb2315678afecb367f032d93f642f64180aa3", //from terminal after deploy.js called
-  //         Manager.abi,
-  //         signer
-  //       ) 
-  //     )
-  //   } else {
-  //     console.log("Install metamask >:|");
-  //   }
-  // }
-  // useEffect(() => {
-  //   initConnection();
-  // }, []);
-
   return (
     <div className="App">
       <div className="header">
@@ -104,7 +70,7 @@ function App() {
         ) : (
           <button onClick={initConnection}>Connect</button>
         )}
-
+        <p>Tickets array: {JSON.stringify(tickets)}</p>
       </div>
       <div className="input_section">
         <div>
@@ -125,21 +91,19 @@ function App() {
           Load data
         </button>
       </div>
-
-
       <div className="main">
         <div className="main_col" style={{ backgroundColor: "lightpink" }}>
           <div className="main_col_heading">
             ToDo
           </div>
           {tickets
-            .map((ticket, index) => ({ id: index, item: ticket}))
+            .map((ticket, index) => ({ item: ticket, id: index }))
             .filter((ticket) => ticket.item.status == 0)
             .map((ticket, index) => {
               return (
-                <div className="main_ticket_card">
-                  <p className="main_ticket_card_id">#{ticket.item.index}</p>
-                  <p >{ticket.item.name}</p>
+                <div key={index} className="main_ticket_card">
+                  <p className="main_ticket_card_id">#{ticket.id}</p>
+                  <p>{ticket.item.name}</p>
                   <div className="main_ticket_button_section">
                     <button
                       className="small_button"
@@ -170,9 +134,35 @@ function App() {
             Busy
           </div>
           {tickets
-            .filter((ticket) => ticket.status == 1)
+            .map((ticket, index) => ({ item: ticket, id: index }))
+            .filter((ticket) => ticket.item.status == 1)
             .map((ticket, index) => {
-              return <p>{ticket.name}</p>
+              return (
+                <div key={index} className="main_ticket_card">
+                  <p className="main_ticket_card_id">#{ticket.id}</p>
+                  <p>{ticket.item.name}</p>
+                  <div className="main_ticket_button_section">
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightpink" }}
+                      onClick={() => updateTicketStatus(ticket.id, 0)}>
+                      ToDo
+                    </button>
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightGreen" }}
+                      onClick={() => updateTicketStatus(ticket.id, 2)}>
+                      Done
+                    </button>
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightGrey" }}
+                      onClick={() => renameTicket(ticket.id)}>
+                      Rename
+                    </button>
+                  </div>
+                </div>
+              )
             })
           }
         </div>
@@ -181,9 +171,35 @@ function App() {
             Done
           </div>
           {tickets
-            .filter((ticket) => ticket.status == 2)
+            .map((ticket, index) => ({ item: ticket, id: index }))
+            .filter((ticket) => ticket.item.status == 2)
             .map((ticket, index) => {
-              return <p>{ticket.name}</p>
+              return (
+                <div key={index} className="main_ticket_card">
+                  <p className="main_ticket_card_id">#{ticket.id}</p>
+                  <p>{ticket.item.name}</p>
+                  <div className="main_ticket_button_section">
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightpink" }}
+                      onClick={() => updateTicketStatus(ticket.id, 0)}>
+                      ToDo
+                    </button>
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightblue" }}
+                      onClick={() => updateTicketStatus(ticket.id, 1)}>
+                      Busy
+                    </button>
+                    <button
+                      className="small_button"
+                      style={{ backgroundColor: "lightGrey" }}
+                      onClick={() => renameTicket(ticket.id)}>
+                      Rename
+                    </button>
+                  </div>
+                </div>
+              )
             })
           }
         </div>
