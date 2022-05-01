@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Manager from "./artifacts/contracts/Manager.sol/Manager.json"
 import { Contract } from "web3-eth-contract"
+import "./App.css"
+import logo from "./assets/logo192.png"
 declare var window: any;
 interface ITicket {
   // index: number,
@@ -63,14 +65,15 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header">
-        <p>Task Manager</p>
+      <div className="header">          
+        <h3>Red's Task Manager</h3>
+        {/* <img id="logo" src={logo}></img> */}
+        <div id="logo-animation"></div>
         {account != "" ? (
           <p>Connected to {account.substring(0, 9)}...</p>
         ) : (
           <button onClick={initConnection}>Connect</button>
         )}
-        <p>Tickets array: {JSON.stringify(tickets)}</p>
       </div>
       <div className="input_section">
         <div>
@@ -92,7 +95,7 @@ function App() {
         </button>
       </div>
       <div className="main">
-        <div className="main_col" style={{ backgroundColor: "lightpink" }}>
+        <div className="main_col" id="todo">
           <div className="main_col_heading">
             ToDo
           </div>
@@ -107,19 +110,19 @@ function App() {
                   <div className="main_ticket_button_section">
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightblue" }}
+                      id="busy"
                       onClick={() => updateTicketStatus(ticket.id, 1)}>
                       Busy
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightGreen" }}
+                      id="done"
                       onClick={() => updateTicketStatus(ticket.id, 2)}>
                       Done
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightGrey" }}
+                      id="rename"
                       onClick={() => renameTicket(ticket.id)}>
                       Rename
                     </button>
@@ -129,7 +132,7 @@ function App() {
             })
           }
         </div>
-        <div className="main_col" style={{ backgroundColor: "cyan" }}>
+        <div className="main_col" id="busy">
           <div className="main_col_heading">
             Busy
           </div>
@@ -144,19 +147,19 @@ function App() {
                   <div className="main_ticket_button_section">
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightpink" }}
+                      id="todo"
                       onClick={() => updateTicketStatus(ticket.id, 0)}>
                       ToDo
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightGreen" }}
+                      id="done"
                       onClick={() => updateTicketStatus(ticket.id, 2)}>
                       Done
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightGrey" }}
+                      id="rename"
                       onClick={() => renameTicket(ticket.id)}>
                       Rename
                     </button>
@@ -166,7 +169,7 @@ function App() {
             })
           }
         </div>
-        <div className="main_col" style={{ backgroundColor: "lightgreen" }}>
+        <div className="main_col" id="done">
           <div className="main_col_heading">
             Done
           </div>
@@ -181,19 +184,19 @@ function App() {
                   <div className="main_ticket_button_section">
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightpink" }}
+                      id="todo"
                       onClick={() => updateTicketStatus(ticket.id, 0)}>
                       ToDo
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightblue" }}
+                      id="busy"
                       onClick={() => updateTicketStatus(ticket.id, 1)}>
                       Busy
                     </button>
                     <button
                       className="small_button"
-                      style={{ backgroundColor: "lightGrey" }}
+                      id="rename"
                       onClick={() => renameTicket(ticket.id)}>
                       Rename
                     </button>
@@ -204,6 +207,7 @@ function App() {
           }
         </div>
       </div>
+      <div className="footer">Shoutout to HashLips</div>
     </div>
   );
 }
